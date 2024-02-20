@@ -93,6 +93,9 @@ class Trainer:
             logits, self.loss = model(x, y)
 
             # backprop and update the parameters
+                """
+                    sandwiched by model.zero_grad() and self.optimizer.step()
+                """
             model.zero_grad(set_to_none=True)
             self.loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), config.grad_norm_clip)
