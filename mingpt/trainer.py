@@ -84,7 +84,7 @@ class Trainer:
             try:
                 batch = next(data_iter)
             except StopIteration:
-                data_iter = iter(train_loader)
+                data_iter = iter(train_loader)    # re-init
                 batch = next(data_iter)
             batch = [t.to(self.device) for t in batch]
             x, y = batch
